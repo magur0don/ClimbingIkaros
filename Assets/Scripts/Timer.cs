@@ -34,10 +34,12 @@ public class Timer : MonoBehaviour
 
     void Update()
     {
+
+        gameTime += Time.deltaTime;
+
         limitTime -= Time.deltaTime;
 
         frameCounter++;
-
         // 例えばframeCounterが180を超えたら
         // この条件式より下の処理は行わない
         if (frameCounter > 180)
@@ -80,7 +82,7 @@ public class Timer : MonoBehaviour
 
         // 処理の内容をコメントで書いちゃう。
 
-        //gameTime += Time.deltaTime;
+        //
         //if (gameTime > 10f && gameTime < 30f)
         //{
         //    Debug.Log($"{gameObject.name}が生まれて{gameTime}秒経った");
