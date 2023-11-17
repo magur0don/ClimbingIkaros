@@ -8,7 +8,7 @@ public class JumpCountViewer : MonoBehaviour
     public PlayerMovement PlayerMovement;
 
     public TextMeshProUGUI JumpText;
-    // Update is called once per frame
+
     void Update()
     {
         // JumpText‚ÉPlayerMovement‚ÌJumpCount‚ðŽæ“¾‚·‚é
