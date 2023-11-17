@@ -23,6 +23,20 @@ public class PlayerMovement : MonoBehaviour
     /// Rigidbody2Dコンポーネント
     /// </summary>
     private Rigidbody2D playerRigidBody;
+
+    /// <summary>
+    /// ジャンプした回数の保存用変数
+    /// </summary>
+    private int jumpCount = 0;
+
+    /// <summary>
+    /// 外部からジャンプ回数を取得するアクセサ
+    /// </summary>
+    public int GetJumpCount
+    {
+        get { return jumpCount; }
+    }
+
     void Start()
     {
         playerRigidBody = GetComponent<Rigidbody2D>();
@@ -41,12 +55,20 @@ public class PlayerMovement : MonoBehaviour
             (transform.position - new Vector3(0, 0.9f, 0)
             , 0.2f,
             GroundLayer);
+        // ここに書いてあったジャンプ挙動を削除
+    }
+
+    private void FixedUpdate()
+    {
         // 地面に接地している場合
         if (isGrounded)
         {   // PlayerのRigidbody2Dに上向きの力を加える
             playerRigidBody.velocity =
                 new Vector2(playerRigidBody.velocity.x,
                 jumpForce);
+
+            // ジャンプする回数をカウントする
+            jumpCount++;
         }
     }
 }
