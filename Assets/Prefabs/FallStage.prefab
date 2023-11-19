@@ -64,9 +64,17 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.11748052
       objectReference: {fileID: 0}
+    - target: {fileID: 6987625620387971841, guid: 3c61481ad2d582148bddd0a6d43dda6d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8622543179915568320, guid: 3c61481ad2d582148bddd0a6d43dda6d, type: 3}
       propertyPath: m_Name
       value: FallStage
+      objectReference: {fileID: 0}
+    - target: {fileID: 8622543179915568320, guid: 3c61481ad2d582148bddd0a6d43dda6d, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -23,10 +23,22 @@ public class StageBase : MonoBehaviour
             case StageTypes.Invalide:
                 break;
             case StageTypes.Normal:
+               
                 break;
             case StageTypes.Fall:
                 // Player‚ª“–‚½‚Á‚½‚ç—Ž‚Æ‚·ŽÀ‘•
-                Debug.Log("—Ž‚Æ‚·");
+                if (collision.gameObject.tag == GameSettingUtility.PlayerTagName)
+                {
+                    if (this.gameObject.GetComponent<Rigidbody2D>() == null)
+                    {
+                        this.gameObject.AddComponent<Rigidbody2D>();
+                    }
+                }
+
+                if (collision.gameObject.layer == GameSettingUtility.GroundLayerNumber)
+                {
+                    this.gameObject.SetActive(false);
+                }
                 break;
         }
     }
