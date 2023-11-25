@@ -15,77 +15,25 @@ public class Timer : MonoBehaviour
         get { return gameTime.ToString("F2"); }
     }
 
-    private float limitTime = 10f;
+    /// <summary>
+    /// 制限時間
+    /// </summary>
+    private float limitTime = 30f;
 
-    private int frameCounter = 0;
-
-    public int GetFrameCounter
-    {
-        get
-        {
-            return frameCounter;
-        }
-    }
     private void Start()
     {
-        
+        gameTime = limitTime;
     }
-
 
     void Update()
     {
-
-        gameTime += Time.deltaTime;
-
-        limitTime -= Time.deltaTime;
-
-        frameCounter++;
-        // 例えばframeCounterが180を超えたら
-        // この条件式より下の処理は行わない
-        if (frameCounter > 180)
+        // もしgameTimeが0をした回れば、
+        // このif文より下の処理を行わない
+        if (gameTime < 0)
         {
+            Debug.LogError("ゲームオーバー");
             return;
         }
-
-        if (frameCounter == 30)
-        {
-            Debug.Log("30フレーム経過しました");
-        }
-
-        // この処理は3回しか行われない
-        if (frameCounter % 60 == 0)
-        {
-            Debug.Log("1秒経過");
-        }
-
-
-
-
-        // limitTimeが0以下になったら
-        //if (limitTime < 0)
-        //{
-        //    // タイムアップと表示する
-        //    Debug.Log("タイムアップ");
-
-        //    // 黄色いログ ←注意してくださいログ
-        //    Debug.LogWarning("タイムアップ");
-
-        //    // 赤いログ ←エラーが起きましたログ
-        //    Debug.LogError("タイムアップ");
-        //}
-        //else // そうじゃないなら
-        //{
-        //    // limitTimeをログにだす
-        //    Debug.Log($"{limitTime}");
-        //}
-
-
-        // 処理の内容をコメントで書いちゃう。
-
-        //
-        //if (gameTime > 10f && gameTime < 30f)
-        //{
-        //    Debug.Log($"{gameObject.name}が生まれて{gameTime}秒経った");
-        //}
+        gameTime -= Time.deltaTime;
     }
 }

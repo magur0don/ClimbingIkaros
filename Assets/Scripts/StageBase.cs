@@ -42,13 +42,32 @@ public class StageBase : MonoBehaviour
                     this.gameObject.SetActive(false);
                 }
                 break;
-                d
-            case StageTypes.TimeAcceleration:
 
+            case StageTypes.TimeAcceleration:
+                // もし当たってきた相手のtagがPlayerだったら、
+                if (collision.gameObject.tag
+                  == GameSettingUtility.PlayerTagName)
+                {
+                    // 時間の縮尺を変更する。
+                    Time.timeScale *= 1.2f;
+                    Debug.Log($"{Time.timeScale}");
+                }
                 break;
 
             case StageTypes.Damage:
-
+                // もし当たってきた相手のtagがPlayerだったら、
+                if (collision.gameObject.tag
+                    == GameSettingUtility.PlayerTagName)
+                {
+                    // Healthコンポーネントをゲットしてきて
+                    var health = collision.gameObject.
+                        GetComponent<Health>();
+                    if (health != null)
+                    {
+                        // HealthコンポーネントのTakeDamageを発動させる。
+                        health.TakeDamage(20f);
+                    }
+                }
                 break;
         }
     }
