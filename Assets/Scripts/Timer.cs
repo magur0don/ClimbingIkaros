@@ -23,15 +23,20 @@ public class Timer : MonoBehaviour
     private void Start()
     {
         gameTime = limitTime;
+        
     }
-
     void Update()
     {
-        // もしgameTimeが0をした回れば、
-        // このif文より下の処理を行わない
-        if (gameTime < 0)
+        if (gameTime == 0)
         {
             Debug.LogError("ゲームオーバー");
+            return;
+        }
+        // もしgameTimeが0をした回れば、
+        // このif文より下の処理を行わない
+        if (gameTime <= 0)
+        {
+            gameTime = 0;
             return;
         }
         gameTime -= Time.deltaTime;
