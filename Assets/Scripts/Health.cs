@@ -31,7 +31,7 @@ public class Health : MonoBehaviour
     /// <summary>
     /// Œ»İ‚ÌhitPoint‚©‚çdamage•ª‚Ì’l‚ğˆø‚­ 
     /// </summary>
-    /// <param name="damage"></param>
+    /// <param name="damage">hitPoint‚©‚çˆø‚©‚ê‚é’l</param>
     public void TakeDamage(float damage)
     {
         // HitPoint‚ª0‚È‚Ì‚Å‚±‚Ìif•ª‚æ‚è‰º‚Íˆ—‚ğs‚í‚È‚¢‚æ‚¤‚É‚·‚é

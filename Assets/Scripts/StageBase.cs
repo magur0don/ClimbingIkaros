@@ -11,7 +11,8 @@ public class StageBase : MonoBehaviour
         Normal,             // 通常
         Fall,               // 落ちる
         TimeAcceleration,   // 時間を進める
-        Damage              // ダメージを与える
+        Damage,             // ダメージを与える
+        Move                // 動く床
     }
     /// <summary>
     /// ステージタイプを通常で初期化
@@ -25,6 +26,10 @@ public class StageBase : MonoBehaviour
             case StageTypes.Invalide:
                 break;
             case StageTypes.Normal:
+                if (collision.gameObject.tag == GameSettingUtility.PlayerTagName)
+                {
+                    Time.timeScale = 1f;
+                }
 
                 break;
             case StageTypes.Fall:
@@ -48,9 +53,12 @@ public class StageBase : MonoBehaviour
                 if (collision.gameObject.tag
                   == GameSettingUtility.PlayerTagName)
                 {
-                    // 時間の縮尺を変更する。
-                    Time.timeScale *= 1.2f;
-                    Debug.Log($"{Time.timeScale}");
+                    if (Time.timeScale < 2)
+                    {
+                        // 時間の縮尺を変更する。
+                        Time.timeScale *= 1.2f;
+                        Debug.Log($"{Time.timeScale}");
+                    }
                 }
                 break;
 
@@ -62,6 +70,7 @@ public class StageBase : MonoBehaviour
                     // Healthコンポーネントをゲットしてきて
                     var health = collision.gameObject.
                         GetComponent<Health>();
+
                     if (health != null)
                     {
                         // HealthコンポーネントのTakeDamageを発動させる。
@@ -69,6 +78,25 @@ public class StageBase : MonoBehaviour
                     }
                 }
                 break;
+        }
+    }
+
+    private void Update()
+    {
+        // StageTypeの値がMoveだったら
+        if (StageType == StageTypes.Move)
+        {
+            // 引数に時間を突っ込んだSinを取得する。
+            // Sin(x)のグラフの動きをするので1から-1の値が代入される。
+            var sin = Mathf.Sin(Time.time);
+            // 一時変数のposを作成し、コードを読みやすくする
+            var pos = this.transform.position;
+            // 自分のpositionのxの値にsinを足し続ける
+            this.transform.position =
+                new Vector3(
+                pos.x + sin * GameSettingUtility.MoveStageHorizontalFactor,
+                pos.y,
+                pos.z);
         }
     }
 }
