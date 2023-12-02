@@ -19,9 +19,23 @@ public class StageBase : MonoBehaviour
     /// </summary>
     public StageTypes StageType = StageTypes.Normal;
 
-
-
-    
+    /// <summary>
+    /// 侵入判定
+    /// </summary>
+    /// <param name="collision"></param>
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // 当たってきたのがプレイヤーだったら
+        if (collision.gameObject.tag == GameSettingUtility.PlayerTagName)
+        {
+            if (collision.transform.position.y >
+                this.transform.position.y)
+            {
+                // 自分のBoxCollider2DのIsTriggerをオフにする
+                this.GetComponent<BoxCollider2D>().isTrigger = false;
+            }
+        }
+    }
 
 
 
@@ -86,6 +100,7 @@ public class StageBase : MonoBehaviour
                 }
                 break;
         }
+        this.GetComponent<BoxCollider2D>().isTrigger = true;
     }
 
     private void Update()
