@@ -19,6 +19,13 @@ public class StageBase : MonoBehaviour
     /// </summary>
     public StageTypes StageType = StageTypes.Normal;
 
+
+
+    
+
+
+
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         switch (StageType)

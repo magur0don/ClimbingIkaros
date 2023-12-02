@@ -37,6 +37,19 @@ public class PlayerMovement : MonoBehaviour
         get { return jumpCount; }
     }
 
+    /// <summary>
+    /// ジャンプ力
+    /// </summary>
+    private float jumpPower = 0f;
+
+    /// <summary>
+    /// 外部からジャンプ力を取得するアクセサ
+    /// </summary>
+    public float GetJumpPower
+    {
+        get { return jumpPower; }
+    }
+
     void Start()
     {
         playerRigidBody = GetComponent<Rigidbody2D>();
@@ -55,7 +68,8 @@ public class PlayerMovement : MonoBehaviour
             (transform.position - new Vector3(0, 0.9f, 0)
             , 0.2f,
             GroundLayer);
-        // ここに書いてあったジャンプ挙動を削除
+
+
     }
 
     private void FixedUpdate()
@@ -70,6 +84,8 @@ public class PlayerMovement : MonoBehaviour
             // ジャンプする回数をカウントする
             jumpCount++;
         }
+        // jumpPowerに加速度のyを与える
+        jumpPower = playerRigidBody.velocity.y;
     }
 }
 
