@@ -555,6 +555,7 @@ GameObject:
   - component: {fileID: 519420033}
   - component: {fileID: 519420034}
   - component: {fileID: 519420035}
+  - component: {fileID: 519420036}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -717,6 +718,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 214247482}
+--- !u!114 &519420036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 142fe070a7dc60b4fa74a32208b56359, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ResultCanvas: {fileID: 1332955315}
+  Timer: {fileID: 519420034}
 --- !u!4 &608316632 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4106523648935206241, guid: 3c61481ad2d582148bddd0a6d43dda6d, type: 3}
@@ -1020,7 +1035,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 691343321}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1332955317}
+        m_TargetAssemblyTypeName: ResultViewer, Assembly-CSharp
+        m_MethodName: Reload
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &691343321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1635,13 +1662,14 @@ GameObject:
   - component: {fileID: 1332955315}
   - component: {fileID: 1332955314}
   - component: {fileID: 1332955313}
+  - component: {fileID: 1332955317}
   m_Layer: 5
   m_Name: ResultCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1332955313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1727,6 +1755,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1332955317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1332955312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b380319ef2df5ba4d860b3886bbafbdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HighScoreText: {fileID: 654917407}
+  Score: {fileID: 1263686254}
 --- !u!1001 &1457774202
 PrefabInstance:
   m_ObjectHideFlags: 0
