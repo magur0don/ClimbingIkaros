@@ -15,6 +15,11 @@ public class Score : MonoBehaviour
     {
         get { return currentHighScore; }
     }
+    
+    public string GetScoreText
+    {
+        get { return currentHighScore.ToString("F2"); }
+    }
 
     // Update is called once per frame
     void Update()

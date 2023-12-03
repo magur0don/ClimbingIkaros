@@ -10,18 +10,22 @@ public class ResultViewer : MonoBehaviour
 
     public Score Score;
 
+    public Canvas MovingCanvas;
+
     /// <summary>
     /// GameObjectがアクティブになったときに実行される
     /// </summary>
     private void OnEnable()
     {
         HighScoreText.text = $"貴方のスコアは{Score.GetScore}点です";
+        
+        MovingCanvas.gameObject.SetActive(true);
     }
     /// <summary>
     /// シーンを再読み込みする
     /// </summary>
-    public void Reload() {
-
+    public void Reload() 
+    {
         SceneManager.LoadScene("SampleScene");
     }
 }
