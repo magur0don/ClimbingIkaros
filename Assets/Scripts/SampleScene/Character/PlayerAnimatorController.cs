@@ -21,5 +21,9 @@ public class PlayerAnimatorController : MonoBehaviour
         // Animatorのfloat型のパラメーター、JumpPowerにPlayerMovementの
         // jumpPowerを代入する。
         playerAnimator.SetFloat("JumpPower",PlayerMovement.GetJumpPower);
+        
+        // AinmatorのIsRightにPlayerMovementの右向きフラグを代入する
+        playerAnimator.SetBool("IsRight", PlayerMovement.GetIsRight);
+    
     }
 }

@@ -50,6 +50,18 @@ public class PlayerMovement : MonoBehaviour
         get { return jumpPower; }
     }
 
+    /// <summary>
+    /// 右向きかどうか
+    /// </summary>
+    private bool isRight = true;
+    /// <summary>
+    /// 外部から右向きかどうかを取得するアクセサ
+    /// </summary>
+    public bool GetIsRight
+    {
+        get { return isRight; }
+    }
+
     void Start()
     {
         playerRigidBody = GetComponent<Rigidbody2D>();
@@ -61,6 +73,24 @@ public class PlayerMovement : MonoBehaviour
         // 左右の移動を計算
         var moveX =
             horizontalInput * moveSpeed * Time.deltaTime;
+
+        if (isRight)
+        {
+            // 左が押された
+            if (horizontalInput < 0)
+            {
+                isRight = false;
+            }
+        }
+        else
+        {
+            // 右が押された
+            if (horizontalInput > 0)
+            {
+                isRight = true;
+            }
+        }
+
         // 現在の位置に移動量を追加
         transform.Translate(new Vector3(moveX, 0, 0));
         // 地面に接触しているかを判定
