@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class ResultViewer : MonoBehaviour
@@ -10,7 +11,7 @@ public class ResultViewer : MonoBehaviour
 
     public Score Score;
 
-    public Canvas MovingCanvas;
+    public Button RetryButton;
 
     /// <summary>
     /// GameObjectがアクティブになったときに実行される
@@ -18,8 +19,8 @@ public class ResultViewer : MonoBehaviour
     private void OnEnable()
     {
         HighScoreText.text = $"貴方のスコアは{Score.GetScore}点です";
-        
-        MovingCanvas.gameObject.SetActive(true);
+
+        RetryButton.gameObject.SetActive(true);
     }
     /// <summary>
     /// シーンを再読み込みする

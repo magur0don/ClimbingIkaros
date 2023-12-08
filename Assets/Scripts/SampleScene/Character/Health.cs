@@ -12,7 +12,16 @@ public class Health : MonoBehaviour
     /// <summary>
     /// 現在のHitPoint
     /// </summary>
+    [SerializeField]
     private float currentHealth;
+
+    /// <summary>
+    /// currentHealthをゲットするためのアクセサ
+    /// </summary>
+    public float GetCurrentHealth
+    {
+        get { return currentHealth; }
+    }
 
     /// <summary>
     /// 死亡判定

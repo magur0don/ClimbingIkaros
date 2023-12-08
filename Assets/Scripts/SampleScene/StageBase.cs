@@ -84,6 +84,7 @@ public class StageBase : MonoBehaviour
                 break;
 
             case StageTypes.Damage:
+                Debug.Log("aaaa");
                 // ‚à‚µ“–‚½‚Á‚Ä‚«‚½‘Šè‚Ìtag‚ªPlayer‚¾‚Á‚½‚çA
                 if (collision.gameObject.tag
                     == GameSettingUtility.PlayerTagName)
