@@ -37,67 +37,44 @@ public class StageBase : MonoBehaviour
         }
     }
 
-
-
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    // OnCollisionEnter2Dのメソッドを書き換える
+    public void OnCollisionEnter2DAction(GameObject player)
     {
         switch (StageType)
         {
             case StageTypes.Invalide:
                 break;
             case StageTypes.Normal:
-                if (collision.gameObject.tag == GameSettingUtility.PlayerTagName)
-                {
-                    Time.timeScale = 1f;
-                }
-
+                Time.timeScale = 1f;
                 break;
-            case StageTypes.Fall:
-                // Playerが当たったら落とす実装
-                if (collision.gameObject.tag == GameSettingUtility.PlayerTagName)
-                {
-                    if (this.gameObject.GetComponent<Rigidbody2D>() == null)
-                    {
-                        this.gameObject.AddComponent<Rigidbody2D>();
-                    }
-                }
 
-                if (collision.gameObject.layer == GameSettingUtility.GroundLayerNumber)
+            case StageTypes.Fall:
+                
+                // Playerが当たったら落とす実装
+                if (this.gameObject.GetComponent<Rigidbody2D>() == null)
                 {
-                    this.gameObject.SetActive(false);
+                    this.gameObject.AddComponent<Rigidbody2D>();
                 }
+                
+                this.gameObject.SetActive(false);
                 break;
 
             case StageTypes.TimeAcceleration:
-                // もし当たってきた相手のtagがPlayerだったら、
-                if (collision.gameObject.tag
-                  == GameSettingUtility.PlayerTagName)
+                
+                if (Time.timeScale < 2)
                 {
-                    if (Time.timeScale < 2)
-                    {
-                        // 時間の縮尺を変更する。
-                        Time.timeScale *= 1.2f;
-                        Debug.Log($"{Time.timeScale}");
-                    }
+                    // 時間の縮尺を変更する。
+                    Time.timeScale *= 1.2f;
                 }
                 break;
 
             case StageTypes.Damage:
-                Debug.Log("aaaa");
-                // もし当たってきた相手のtagがPlayerだったら、
-                if (collision.gameObject.tag
-                    == GameSettingUtility.PlayerTagName)
+                // Healthコンポーネントをゲットしてきて
+                var health = player.GetComponent<Health>();
+                if (health != null)
                 {
-                    // Healthコンポーネントをゲットしてきて
-                    var health = collision.gameObject.
-                        GetComponent<Health>();
-
-                    if (health != null)
-                    {
-                        // HealthコンポーネントのTakeDamageを発動させる。
-                        health.TakeDamage(20f);
-                    }
+                    // HealthコンポーネントのTakeDamageを発動させる。
+                    health.TakeDamage(20f);
                 }
                 break;
         }

@@ -17,7 +17,7 @@ public class HealthViewer : MonoBehaviour
 
     private void Update()
     {
-        // カメラの座標変換を使ってプレイヤーのポジションをSliderのPosition＋Y軸方向に1の値を代入し続ける
+        // SliderのPositionにカメラの座標変換を使ってプレイヤーのポジション＋Y軸方向に1の値を代入し続ける
         this.HealthSlider.GetComponent<RectTransform>().position =
           Camera.main.WorldToScreenPoint(this.Health.gameObject.transform.position + Vector3.up);
         
