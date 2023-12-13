@@ -27,6 +27,6 @@ public class ResultViewer : MonoBehaviour
     /// </summary>
     public void Reload() 
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene(GameSceneUtility.SampleSceneName);
     }
 }

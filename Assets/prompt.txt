@@ -1,0 +1,3 @@
+best quality, masterpiece,ultra detailed, game character, a man, wide shot,full body,standing, Ikaros,big wings made of wax, loincloth, golden hair, beautiful face, bare hands, Collection of materials, best quality ,simple background, <lora:Clothing - Spartan Armor:0.24>,Background is simple gray color monochromatic,(no background:2), <lora:darkSouls_25SlightlyOverbaked:0.1>
+Negative prompt: flat color, flat shading, nsfw,(worst quality, low quality:1.4), interlocked fingers, (zombie, sketch, comic), have a weapon,
+Steps: 50, Sampler: DPM++ 2M Karras, CFG scale: 7, Seed: 3428142308, Size: 720x720, Model hash: e3edb8a26f, Model: ghostmix_v20Bakedvae, Lora hashes: "Clothing - Spartan Armor: f355f9d4755d, darkSouls_25SlightlyOverbaked: 235d51a5df0d", Version: v1.6.0
