@@ -11,4 +11,9 @@ public static class GameSceneUtility
     /// SampleScene‚Ì–¼‘O‚Ì’è”
     /// </summary>
     public const string SampleSceneName = "SampleScene";
+
+    /// <summary>
+    /// TtileScene‚Ì–¼‘O‚Ì’è”
+    /// </summary>
+    public const string TitleSceneName = "TitleScene";
 }
