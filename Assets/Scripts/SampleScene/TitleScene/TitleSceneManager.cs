@@ -5,8 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class TitleSceneManager : MonoBehaviour
 {
-
-    public void GotoInGameScene() {
+    /// <summary>
+    /// インゲームのシーンに移行する
+    /// </summary>
+    public void GotoInGameScene() 
+    {
         SceneManager.LoadScene(GameSceneUtility.SampleSceneName);
-;    }
+;   }
 }
