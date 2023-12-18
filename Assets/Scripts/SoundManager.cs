@@ -52,6 +52,7 @@ public class SoundManager : MonoBehaviour
             {
                 audioSources[i].clip = SEClip;
                 // for•¶‚ð”²‚¯‚é
+                audioSources[i].Play();
                 break;
             }
         }
