@@ -11,6 +11,14 @@ public class SoundManager : MonoBehaviour
     /// </summary>
     private AudioSource[] audioSources = new AudioSource[4];
 
+    /// <summary>
+    /// AudioSourceの0番地はBGM専用
+    /// </summary>
+    public AudioSource GetBGMAudioSouce
+    {
+        get { return audioSources[0]; }
+    }
+
     public AudioClip BGMClip;
 
     public AudioClip SEClip;
@@ -51,10 +59,28 @@ public class SoundManager : MonoBehaviour
             if (!audioSources[i].isPlaying)
             {
                 audioSources[i].clip = SEClip;
-                // for文を抜ける
                 audioSources[i].Play();
+                // for文を抜ける
                 break;
             }
         }
     }
+
+    /// <summary>
+    /// SEに使っているAudioSource達がプレイ中かどうか
+    /// </summary>
+    /// <returns></returns>
+    public bool IsSEAudioSourcesPlaying()
+    {
+        for (int i = 1; i < audioSources.Length; i++)
+        {
+            // SEのaudioSourceがプレイ中だったら
+            if (audioSources[i].isPlaying)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
