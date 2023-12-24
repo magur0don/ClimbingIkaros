@@ -65,12 +65,24 @@ public class PlayerMovement : MonoBehaviour
         get { return isRight; }
     }
 
+
+    private MainGameStateManager mainGameStateManager => FindAnyObjectByType<MainGameStateManager>();
+
+
     void Start()
     {
         playerRigidBody = GetComponent<Rigidbody2D>();
     }
     void Update()
     {
+        // mainGameStateMangerでゲーム終了のフラグが立っていたら
+        if (mainGameStateManager.GetGameEnd)
+        {
+            // 移動など(ここから下)の処理をしない
+            return;
+        }
+
+
         // 左右の入力を取得
         var horizontalInput = Input.GetAxis("Horizontal");
         // 左右の移動を計算
